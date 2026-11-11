@@ -14,6 +14,27 @@
 - **Live Observability:** Native `/metrics` endpoint with bundled Prometheus and Grafana dashboards.
 - **Zero-Downtime Hot Reloading:** Live `guardrail.yml` updates without proxy restarts.
 
+## 📐 Architecture Flow
+
+```mermaid
+flowchart TD
+    Client[AI Client / Claude Desktop] -->|stdio| Bridge[mcp-bridge CLI]
+    Bridge -->|HTTP/SSE + API Key| Proxy[MCP Guardrail Proxy :3000]
+
+    subgraph Middleware Pipeline
+        Proxy --> Auth[1. Auth & Scope Verification]
+        Auth --> Rate[2. Redis Lua Rate Limiter :6379]
+        Rate --> Security[3. Dual Regex & ONNX ML Defense]
+        Security --> Metrics[4. Prometheus Metrics Exporter]
+    end
+
+    Security -->|Forward Valid JSON-RPC| Target[Target MCP Server :8000]
+    
+    subgraph Observability
+        Metrics --> Prom[Prometheus :9090]
+        Prom --> Grafana[Grafana Dashboard :3001]
+    end
+
 ## 🚀 Quick Start
 
 ### 1. Launch Stack via Docker
