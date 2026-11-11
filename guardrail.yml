@@ -1,0 +1,55 @@
+version: "1.0"
+
+server:
+  port: 3000
+  target_mcp_url: "http://localhost:8000"
+
+# Identity Tiers & Dynamic Client Credentials
+clients:
+  - id: "client_free_01"
+    name: "Standard Free Client"
+    api_key: "key_free_123"
+    tier: "free"
+    allowed_tools:
+      - "calculator"
+      - "echo"
+
+  - id: "client_ent_01"
+    name: "Enterprise Client"
+    api_key: "key_enterprise_999"
+    tier: "enterprise"
+    allowed_tools:
+      - "*"
+
+  - id: "client_beta_02"
+    name: "Beta Tester Client"
+    api_key: "key_beta_777"
+    tier: "pro"
+    allowed_tools: ["*"]
+
+# Rate Limit Bucket Definitions (Capacity & Refill rate per second)
+tiers:
+  free:
+    default: { capacity: 10, refill_rate: 1.0 }
+    execution: { capacity: 3, refill_rate: 0.2 }
+  pro:
+    default: { capacity: 30, refill_rate: 5.0 }
+    execution: { capacity: 15, refill_rate: 2.0 }
+  enterprise:
+    default: { capacity: 100, refill_rate: 20.0 }
+    execution: { capacity: 50, refill_rate: 10.0 }
+
+security:
+  max_payload_bytes: 512000
+  ml_guard:
+    enabled: true
+    model: "protectai/deberta-v3-base-prompt-injection-v2"
+    threshold: 0.80
+  custom_shell_patterns:
+    - ";\\s*(rm|sudo|cat|curl|wget|bash|sh|python|eval)\\b"
+    - "\\|\\s*(bash|sh|zsh|eval)\\b"
+  custom_injection_patterns:
+    - "(ignore|disregard|bypass)\\s+(all\\s+)?(previous|above|prior)?\\s*(instructions|constraints|directives)"
+    - "you\\s+are\\s+now\\s+a\\s+DAN"
+    - "system\\s+prompt\\s+override"
+    - "reveal\\s+(system|internal)\\s+(variables|prompt|instructions)"
