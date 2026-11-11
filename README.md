@@ -1,4 +1,4 @@
-# 🛡️ MCP-Guardrail Proxy
+# MCP-Guardrail Proxy
 
 > An enterprise-grade, lightweight security & rate-limiting reverse proxy for Model Context Protocol (MCP) tool servers.
 
@@ -6,7 +6,7 @@
 ![Docker](https://img.shields.io/badge/docker-compose-ready-brightgreen.svg)
 ![TypeScript](https://img.shields.io/badge/typescript-5.x-blue.svg)
 
-## 🌟 Key Features
+## Key Features
 - **OAuth 2.1 / API Key Verification:** Granular tool-level permission scopes per identity tier.
 - **Atomic Distributed Rate-Limiting:** Redis Lua-backed Token Bucket algorithm tuned for LLM burst traffic patterns.
 - **Dual Defense Engine:** Regex shell injection detection + local ONNX ML prompt injection scoring.
@@ -14,7 +14,7 @@
 - **Live Observability:** Native `/metrics` endpoint with bundled Prometheus and Grafana dashboards.
 - **Zero-Downtime Hot Reloading:** Live `guardrail.yml` updates without proxy restarts.
 
-## 📐 Architecture Flow
+## Architecture Flow
 
 ```mermaid
 flowchart TD
@@ -38,7 +38,7 @@ flowchart TD
 
 
 
-## 🚀 Quick Start
+## Quick Start
 
 ### 1. Launch Stack via Docker
 ```bash
