@@ -6,25 +6,22 @@ export interface ClientIdentity {
   id: string;
   name: string;
   tier: UserTier;
-  allowedTools: string[]; // e.g., ["*"] or ["calculator", "web_search"]
+  allowedTools: string[];
 }
 
 export interface JsonRpcRequest {
-  jsonrpc: '2.0';
-  id?: string | number;
+  jsonrpc: string;
   method: string;
-  params?: {
-    name?: string;
-    arguments?: Record<string, any>;
-    [key: string]: any;
-  };
+  params?: any;
+  id?: string | number | null;
 }
 
 export interface ProxyContext {
   jsonrpc?: JsonRpcRequest;
-  isExecutionMethod: boolean;
   mcpMethod?: string;
   toolName?: string;
+  isExecutionMethod?: boolean;
+  client?: ClientIdentity;
 }
 
 export interface GuardrailRequest extends Request {

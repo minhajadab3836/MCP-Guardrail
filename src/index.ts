@@ -93,15 +93,17 @@ const mcpProxy = createProxyMiddleware({
         proxyReq.write(bodyData);
       }
     },
-    error: (err, req, res: express.Response) => {
-      res.status(502).json({
-        jsonrpc: '2.0',
-        error: {
-          code: -32000,
-          message: 'Bad Gateway: Could not connect to downstream MCP server.',
-        },
-        id: (req as GuardrailRequest).proxyContext?.jsonrpc?.id || null,
-      });
+    error: (err: Error, req: any, res: any) => {
+      if (res && typeof res.status === 'function') {
+        res.status(502).json({
+          jsonrpc: '2.0',
+          error: {
+            code: -32000,
+            message: 'Bad Gateway: Could not connect to downstream MCP server.',
+          },
+          id: (req as GuardrailRequest).proxyContext?.jsonrpc?.id || null,
+        });
+      }
     },
   },
 });
