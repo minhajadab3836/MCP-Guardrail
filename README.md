@@ -34,6 +34,9 @@ flowchart TD
         Metrics --> Prom[Prometheus :9090]
         Prom --> Grafana[Grafana Dashboard :3001]
     end
+```
+
+
 
 ## 🚀 Quick Start
 
@@ -44,9 +47,8 @@ docker compose up --build -d
 
 ### 2. Run Automated Verification Tests
 
-Bash
 
-```
+```bash
 npm test
 ```
 
@@ -54,9 +56,9 @@ npm test
 
 Add to your `claude_desktop_config.json`:
 
-JSON
 
-```
+
+```json
 {
   "mcpServers": {
     "secure-mcp-proxy": {
