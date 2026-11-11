@@ -1,6 +1,6 @@
 import { Response, NextFunction } from 'express';
-import { GuardrailRequest } from '../types';
-import { RateLimiterService } from '../services/rateLimiter';
+import { GuardrailRequest } from '../types.js';
+import { RateLimiterService } from '../services/rateLimiter.js';
 
 export const enforceRateLimits = (
   req: GuardrailRequest,

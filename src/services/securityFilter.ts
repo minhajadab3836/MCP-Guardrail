@@ -1,4 +1,4 @@
-import { ConfigLoader } from './configLoader';
+import { ConfigLoader } from './configLoader.js';
 
 export interface SecurityCheckResult {
   safe: boolean;

@@ -1,5 +1,5 @@
 import { Response, NextFunction } from 'express';
-import { GuardrailRequest, JsonRpcRequest } from '../types';
+import { GuardrailRequest, JsonRpcRequest } from '../types.js';
 
 export const inspectJsonRpc = (req: GuardrailRequest, res: Response, next: NextFunction): void => {
   // Pass-through non-POST requests (e.g., SSE handshake or GET requests)

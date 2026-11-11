@@ -1,17 +1,17 @@
 import express from 'express';
 import { createProxyMiddleware } from 'http-proxy-middleware';
 import dotenv from 'dotenv';
-import { inspectJsonRpc } from './middleware/inspector';
-import { authenticateClient } from './middleware/auth';
-import { enforceRateLimits } from './middleware/rateLimit';
-import { inspectSecurity } from './middleware/security';
-import { globalErrorHandler } from './middleware/errorHandler';
-import { AuditLogger } from './services/logger';
-import { redisClient } from './services/redisClient';
-import { ConfigLoader } from './services/configLoader';
-import { MetricsService } from './services/metrics';
-import { MlSecurityFilterService } from './services/mlSecurityFilter';
-import { GuardrailRequest } from './types';
+import { inspectJsonRpc } from './middleware/inspector.js';
+import { authenticateClient } from './middleware/auth.js';
+import { enforceRateLimits } from './middleware/rateLimit.js';
+import { inspectSecurity } from './middleware/security.js';
+import { globalErrorHandler } from './middleware/errorHandler.js';
+import { AuditLogger } from './services/logger.js';
+import { redisClient } from './services/redisClient.js';
+import { ConfigLoader } from './services/configLoader.js';
+import { MetricsService } from './services/metrics.js';
+import { MlSecurityFilterService } from './services/mlSecurityFilter.js';
+import { GuardrailRequest } from './types.js';
 
 dotenv.config();
 

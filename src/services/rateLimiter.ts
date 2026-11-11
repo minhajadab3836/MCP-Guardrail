@@ -1,4 +1,4 @@
-import { UserTier } from '../types';
+import { UserTier } from '../types.js';
 
 interface BucketConfig {
   capacity: number;

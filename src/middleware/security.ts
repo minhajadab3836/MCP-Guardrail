@@ -1,7 +1,7 @@
 import { Response, NextFunction } from 'express';
-import { GuardrailRequest } from '../types';
-import { SecurityFilterService } from '../services/securityFilter';
-import { MlSecurityFilterService } from '../services/mlSecurityFilter';
+import { GuardrailRequest } from '../types.js';
+import { SecurityFilterService } from '../services/securityFilter.js';
+import { MlSecurityFilterService } from '../services/mlSecurityFilter.js';
 
 export const inspectSecurity = async (
   req: GuardrailRequest,

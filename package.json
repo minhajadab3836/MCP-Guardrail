@@ -1,18 +1,24 @@
 {
   "name": "mcp-guardrail",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Production-grade security and rate-limiting proxy for MCP servers",
+  "main": "dist/index.js",
+  "type": "module",
   "scripts": {
     "dev": "nodemon --watch 'src/**/*.ts' --exec 'tsx' src/index.ts",
     "test": "tsx scripts/test-suite.ts",
     "traffic": "tsx scripts/generate-traffic.ts",
     "bridge": "tsx src/cli/bridge.ts"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "type": "commonjs",
+  "keywords": [
+    "mcp",
+    "security",
+    "proxy",
+    "rate-limiting",
+    "prompt-injection"
+  ],
+  "author": "Md Minhaj Adab",
+  "license": "MIT",
   "dependencies": {
     "@xenova/transformers": "^2.17.2",
     "chokidar": "^6.0.0",

@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
-import { GuardrailRequest } from '../types';
-import { sendJsonRpcError, JsonRpcErrorCode } from '../utils/errors';
+import { GuardrailRequest } from '../types.js';
+import { sendJsonRpcError, JsonRpcErrorCode } from '../utils/errors.js';
 
 export const globalErrorHandler = (
   err: any,

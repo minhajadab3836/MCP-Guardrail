@@ -1,5 +1,5 @@
 import { pipeline } from '@xenova/transformers';
-import { ConfigLoader } from './configLoader';
+import { ConfigLoader } from './configLoader.js';
 
 export class MlSecurityFilterService {
   private static classifier: any = null;

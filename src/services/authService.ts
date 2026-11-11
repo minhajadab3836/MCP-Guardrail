@@ -1,5 +1,5 @@
-import { ClientIdentity } from '../types';
-import { ConfigLoader } from './configLoader';
+import { ClientIdentity } from '../types.js';
+import { ConfigLoader, ClientConfig } from './configLoader.js';
 
 export class AuthService {
   public static async authenticate(authHeader?: string, apiKeyHeader?: string): Promise<ClientIdentity | null> {
@@ -7,7 +7,7 @@ export class AuthService {
 
     // 1. Authenticate via X-API-Key Header
     if (apiKeyHeader) {
-      const match = config.clients.find((c) => c.api_key === apiKeyHeader);
+      const match = config.clients.find((c: ClientConfig) => c.api_key === apiKeyHeader);
       if (match) {
         return {
           id: match.id,
@@ -21,7 +21,7 @@ export class AuthService {
     // 2. Authenticate via Authorization Bearer Token Header
     if (authHeader && authHeader.startsWith('Bearer ')) {
       const token = authHeader.substring(7);
-      const match = config.clients.find((c) => c.api_key === token);
+      const match = config.clients.find((c: ClientConfig) => c.api_key === token);
       if (match) {
         return {
           id: match.id,

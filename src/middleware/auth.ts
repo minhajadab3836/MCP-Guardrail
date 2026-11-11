@@ -1,6 +1,6 @@
 import { Response, NextFunction } from 'express';
-import { GuardrailRequest } from '../types';
-import { AuthService } from '../services/authService';
+import { GuardrailRequest } from '../types.js';
+import { AuthService } from '../services/authService.js';
 
 export const authenticateClient = async (
   req: GuardrailRequest,

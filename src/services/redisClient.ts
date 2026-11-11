@@ -1,4 +1,4 @@
-import Redis from 'ioredis';
+import { Redis } from 'ioredis';
 import dotenv from 'dotenv';
 
 dotenv.config();
@@ -7,14 +7,14 @@ const REDIS_URL = process.env.REDIS_URL || 'redis://localhost:6379';
 
 export const redisClient = new Redis(REDIS_URL, {
   maxRetriesPerRequest: 3,
-  retryStrategy(times) {
+  retryStrategy(times: number) {
     const delay = Math.min(times * 50, 2000);
     return delay;
   },
   lazyConnect: true,
 });
 
-redisClient.on('error', (err) => {
+redisClient.on('error', (err: Error) => {
   console.error('[Redis Client Error]:', err.message);
 });
 

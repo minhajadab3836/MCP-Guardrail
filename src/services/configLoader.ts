@@ -2,7 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import yaml from 'js-yaml';
 import chokidar from 'chokidar';
-import { UserTier } from '../types';
+import { UserTier } from '../types.js';
 
 export interface ClientConfig {
   id: string;
